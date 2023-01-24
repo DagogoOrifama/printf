@@ -6,7 +6,7 @@
  * @buff_index: index at which to add next char
  */
 
-void print_buffer(char buffer[], int buff_index)
+void print_buffer(char buffer[], int *buff_index)
 {
 	if (*buff_index > 0)
 	{
@@ -25,7 +25,7 @@ void print_buffer(char buffer[], int buff_index)
 int _printf(const char *format, ...)
 {
 	int i;
-	int print = print_char = 0;
+	int print = 0, print_char = 0;
 	int flags, width, precision, size, buff_index = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
@@ -37,10 +37,13 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		buffer[buff_index++] = format[i];
-		if (buff_index == BUFF_SIZE)
-			print_buffer(buffer, &buff_index);
-		print_char++;
+		if (format[i] != '%')
+		{
+			buffer[buff_index++] = format[i];
+			if (buff_index == BUFF_SIZE)
+				print_buffer(buffer, &buff_index);
+			print_char++;
+		}
 		else
 		{
 			print_buffer(buffer, &buff_index);
