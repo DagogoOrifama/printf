@@ -52,5 +52,5 @@ output : The dog jumped 7 times! -C
 All the above options are functional together.
 
 ### Authors
-Dagogo Orifama & Chukwukere Chinemerem
+[Dagogo Orifama](https://github.com/dagoris2010) & [Chukwukere Chinemerem](https://github.com/Chey04)
 
